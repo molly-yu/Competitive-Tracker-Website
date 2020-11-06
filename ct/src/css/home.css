@@ -1,0 +1,82 @@
+.Login{
+    width:100%;
+}
+
+p{
+    font-family: 'Inter', sans-serif;
+}
+h1{
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    padding: 30px;
+    
+}
+h2{
+    font-family: 'Inter', sans-serif;
+    padding:10px;
+    font-weight:600;
+}
+
+.logo {
+    height:130px;
+    width:130px;
+    padding:20px;
+}
+
+.button{
+    background-color: #af0b1c;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.button:hover {
+    opacity: 0.8;
+  }
+
+.input{
+    width:100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 25px;
+  }
+
+  .inputrow{
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .info{
+      width:60%;
+      margin:auto;
+      text-align:center;
+  }
+  
+  .img{
+      height:20em;
+  }
+
+  .products{
+      width:80%;
+      margin:auto;
+      background:gray;
+      padding-top:30px;
+  }
+.mm-container {
+    height: 30px;
+    background: #af0b1c;
+    -moz-box-shadow: 0 3px 0 rgba(0,0,0,0.15);
+    box-shadow: 0 3px 0 rgba(0,0,0,0.15);
+    z-index: 100;
+}
+
+.content{
+    padding:30px;
+}
