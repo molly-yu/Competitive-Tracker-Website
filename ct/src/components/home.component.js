@@ -61,19 +61,21 @@ class Home extends Component{
                 <Row>
                         <div className="info">
                         <h1>Tracker Home</h1>
-                        <h2>CT Mandate</h2>
+                        <div className="mandate">
+                        <h2> CT Mandate</h2>
                         <p>The Competitive Tracker is a project that helps automate the compilation of interest rate data from various
                         competitor websites into an Excel report, and detects and potential changes in such websites since the previous execution.
                         It is a one-of-a-kind collaboration between Career Programs and Business to enable productivity savings.
                         The Competitive Tracker project team aims to build automation tools that streamline this process, bringing value that
                              translates into dollars for the bank.</p>
+                        </div>
                         <h2>Our Products</h2>
                         </div>
                 </Row>
                 
                 <Row className="products">
-                        <Col>
-                        <Card style={{ width: '40rem'}}>
+                        <Col className="product">
+                        <Card style={{ width: '500px'}}>
                             <Card.Img variant="top" src={placeholder} className="img"/>
                             <Card.Body >
                                 <Card.Title>Special Offers</Card.Title>
@@ -94,8 +96,8 @@ class Home extends Component{
                             </Card.Body>
                             </Card>
                         </Col>
-                        <Col>
-                        <Card style={{ width: '40rem' }}>
+                        <Col className="product">
+                        <Card style={{ width: '500px' }}>
                             <Card.Img variant="top" src={placeholder} className="img"/>
                             <Card.Body>
                                 <Card.Title>Rate Scanner</Card.Title>
@@ -121,6 +123,11 @@ class Home extends Component{
                         </Col>
 
                 </Row>
+                <div className="contact">
+                    <h1>Contact Us</h1>
+                    <p>Team:</p>
+                    <p>Any additional questions? Please reach out to us at __________</p>
+                </div>
                 </div>
             </div>
         )

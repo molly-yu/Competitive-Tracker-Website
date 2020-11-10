@@ -61,7 +61,7 @@ export default class Login extends Component {
                 <Row>
                     <Col sm="7">
                         <div className="info">
-                        <h2>CT Mandate</h2>
+                        <h3>CT Mandate</h3>
                         <p>The Competitive Tracker is a project that helps automate the compilation of interest rate data from various
                         competitor websites into an Excel report, and detects and potential changes in such websites since the previous execution.
                         It is a one-of-a-kind collaboration between Career Programs and Business to enable productivity savings.
@@ -71,7 +71,7 @@ export default class Login extends Component {
                     </Col>
 
                     <Col sm="4">
-                        <h2>Access the Reports</h2>
+                        <h3>Access the Reports</h3>
                         <div className="input">
                             <div className="penguin">
                         <img src={penguin} alt="Logo" />
