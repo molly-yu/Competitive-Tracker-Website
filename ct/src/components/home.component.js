@@ -55,7 +55,7 @@ class Home extends Component{
                     <img src={logo} className="logo" alt="Logo" />
                     <h1>Competitive Tracker</h1>
                 </Row>
-                <div className="mm-container"/>
+                 <div className="mm-container"/> 
                 <div className="content">
                 
                 <Row>
@@ -72,9 +72,9 @@ class Home extends Component{
                         <h2>Our Products</h2>
                         </div>
                 </Row>
-                
-                <Row className="products">
-                        <Col className="product">
+                <div className="products">
+                    <Row>         
+                        <Col>
                         <Card style={{ width: '500px'}}>
                             <Card.Img variant="top" src={placeholder} className="img"/>
                             <Card.Body >
@@ -96,15 +96,13 @@ class Home extends Component{
                             </Card.Body>
                             </Card>
                         </Col>
-                        <Col className="product">
+                        <Col >
                         <Card style={{ width: '500px' }}>
                             <Card.Img variant="top" src={placeholder} className="img"/>
                             <Card.Body>
                                 <Card.Title>Rate Scanner</Card.Title>
                                 <Card.Text style={{height:'20rem'}}>
                                 The Rate Scanner is a user-friendly tool that allows individuals to action the basic commands of the product such as Scanning the Rates as well as Exporting the Report. The tool has many capabilities including highlighting accounts that have had a change in rate, exporting select or all reports which are automatically saved to users’ H: drives, and an execution log that identifies all accounts that were successfully scanned.
-                                The first action the user will perform is clicking on the “Scan All Rates” button to run the macro for refreshing all power queries. Resultantly, the macro triggers a subroutine to refresh all power queries within each FI’s tab. As power queries are being refreshed, a progress bar is displayed on the screen, indicating that the queries have been completed. An execution log will also be displayed for the user to see, in which the outcome of a query refresh will be logged (Success or Error+message). Finally, when the refreshing is done, another subroutine will be triggered to highlight any updates in the interest rate data from the last refreshed report.
-                                Following the rate scanning of the various Financial Institutions, three reports are generated in separate tabs which the individual can choose from: CAD Retail Report, Brokerage Report, and USD Report.
                                 
                                 </Card.Text>
                             </Card.Body>
@@ -121,12 +119,19 @@ class Home extends Component{
                             </Card.Body>
                             </Card>
                         </Col>
-
+                        
                 </Row>
+                </div>
                 <div className="contact">
                     <h1>Contact Us</h1>
                     <p>Team:</p>
                     <p>Any additional questions? Please reach out to us at __________</p>
+                    <button className="button2" type="submit">
+                        Raise an Issue
+                    </button>
+                    <button className="button2" type="submit">
+                        Give Feedback
+                    </button>
                 </div>
                 </div>
             </div>
