@@ -3,17 +3,17 @@ import { Form, FormControl, InputGroup, Row, Col, Button, Table, Card, ListGroup
 import '../css/home.css'
 import logo from '../assets/cibclogo.png';
 import placeholder from '../assets/placeholder.jpg';
+import axios from 'axios';
 
 class Home extends Component{
-    // constructor(props){
-    //     super(props);
+     constructor(props){
+         super(props);
     //     this.state = {
 
     //     }
     //     this.onChange=this.onChange.bind(this);
     //     this.onSubmit= this.onSubmit.bind(this);
-    // }
-
+     }
     onChange(e){
         this.setState({[e.target.name]: e.target.value}); // set the state of the particular component
     }
@@ -87,7 +87,7 @@ class Home extends Component{
                                 <ListGroupItem>etcetc</ListGroupItem>
                             </ListGroup> */}
                             <Card.Body>
-                                <button className="button" type="submit">
+                                <button className="button" type="submit" >
                                     Learn More
                                 </button>
                                 <button className="button" type="submit">
@@ -110,7 +110,7 @@ class Home extends Component{
                                 <ListGroupItem>etcetc</ListGroupItem>
                             </ListGroup> */}
                             <Card.Body>
-                                <button className="button" type="submit">
+                                <button className="button" type="submit" >
                                     Learn More
                                 </button>
                                 <button className="button" type="submit">
@@ -126,10 +126,11 @@ class Home extends Component{
                     <h1>Contact Us</h1>
                     <p>Team:</p>
                     <p>Any additional questions? Please reach out to us at __________</p>
-                    <button className="button2" type="submit">
+                    <button className="button2"  onClick = {() => window.showCollectorDialog2}>
                         Raise an Issue
                     </button>
-                    <button className="button2" type="submit">
+
+                    <button className="button2"  onClick = {() => window.showCollectorDialog}> 
                         Give Feedback
                     </button>
                 </div>
