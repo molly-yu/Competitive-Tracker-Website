@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Form, FormControl, InputGroup, Row, Col, Button, Table } from 'react-bootstrap';
+import { Form, FormControl,  Row, Col, Button, Table } from 'react-bootstrap';
 import '../css/login.css'
 import logo from '../assets/cibclogo.png';
 import penguin from '../assets/cibcpenguin.png';
+
+import axios from 'axios';
 
 export default class Login extends Component {
     constructor(props) {
@@ -21,33 +23,46 @@ export default class Login extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        // if (!this.handleValidation()){ // checks if everything is filled out
-        //     alert("The form is incomplete.", "Error");
-        // }
-        // else {
-        //     const camera = {
-        //         ip: this.state.ip,
-        //         user: this.state.user,
-        //         pass: this.state.pass,
-        //         ping: this.state.ping,
-        //         video: this.state.video
-        //     };
-        //     this.props.createCamera(camera); // adds camera to list
-        //     alert("Camera saved.", "ARBSUtility");
-        // }
+        var formData = new FormData();
+        if (!this.handleValidation()){ // checks if everything is filled out
+            alert("The form is incomplete.", "Error");
+        }
+        else {
+            formData.append('username', this.state.username);
+            formData.append('password', this.state.password);
+
+            // post request to server
+            axios({
+                method:'post',
+                url:'/login',
+                data: formData
+            })
+            .then(function(response){
+                console.log(response);
+                console.log(formData);
+            })
+            .catch(function(response){
+                console.log(response);
+            })
+
+
+        }
+
+        
+
+
     }
 
-    // handleValidation(){
-    //     let ip = this.state.ip;
-    //     let user = this.state.user;
-    //     let pass = this.state.pass;
-    //     let isValid = true;
+    handleValidation(){
+        let user = this.state.username;
+        let pass = this.state.password;
+        let isValid = true;
 
-    //     if (ip=='' || user=='' || pass==''){
-    //         isValid = false;
-    //     }
-    //     return isValid;
-    // }
+        if (user=='' || pass==''){
+            isValid = false;
+        }
+        return isValid;
+    }
 
     render() {
         return (

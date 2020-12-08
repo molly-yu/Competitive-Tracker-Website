@@ -15,6 +15,8 @@ app = Flask(__name__, static_folder='build')
 # Secret Token Key
 app.config['SECRET_KEY'] = 'secret_key_test'
 
+Access-Control-Allow-Origin: http://localhost:3000
+
 # MasterDetail Page Endpoint
 @app.route(CONSTANTS['ENDPOINT']['MASTER_DETAIL'])
 def get_master_detail():
