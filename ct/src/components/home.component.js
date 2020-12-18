@@ -1,54 +1,54 @@
 import React, {Component} from 'react';
-import { Form, FormControl, InputGroup, Row, Col, Button, Table, Card, ListGroup,  ListGroupItem } from 'react-bootstrap';
+import {Row, Col, Button, Table, Card} from 'react-bootstrap';
+import { Redirect } from "react-router-dom";
 import '../css/home.css'
 import logo from '../assets/cibclogo.png';
 import placeholder from '../assets/placeholder.jpg';
 import axios from 'axios';
 
+var ls = require('local-storage');
+
 class Home extends Component{
      constructor(props){
          super(props);
-    //     this.state = {
-
-    //     }
+        this.state = {
+            redirect: null
+        }
     //     this.onChange=this.onChange.bind(this);
     //     this.onSubmit= this.onSubmit.bind(this);
      }
+
+     componentDidMount(){
+         // check to see if token is valid
+         let token = ls.get('token');
+         if(token == null || token.length == 0){
+            //this.setState({ redirect: "/login" }); // if not logged in, redirect to login page
+         }
+         else{
+         axios.get('/test', { headers: { 'x-access-token': token} })
+            .then(response => {
+                // If request is good
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log('error ' + error);
+                //this.setState({ redirect: "/login" }); // if not logged in, redirect to login page
+            });
+        }
+     }
+
     onChange(e){
         this.setState({[e.target.name]: e.target.value}); // set the state of the particular component
     }
 
     onSubmit(e){
         e.preventDefault();
-        // if (!this.handleValidation()){ // checks if everything is filled out
-        //     alert("The form is incomplete.", "Error");
-        // }
-        // else {
-        //     const camera = {
-        //         ip: this.state.ip,
-        //         user: this.state.user,
-        //         pass: this.state.pass,
-        //         ping: this.state.ping,
-        //         video: this.state.video
-        //     };
-        //     this.props.createCamera(camera); // adds camera to list
-        //     alert("Camera saved.", "ARBSUtility");
-        // }
     }
 
-    // handleValidation(){
-    //     let ip = this.state.ip;
-    //     let user = this.state.user;
-    //     let pass = this.state.pass;
-    //     let isValid = true;
-
-    //     if (ip=='' || user=='' || pass==''){
-    //         isValid = false;
-    //     }
-    //     return isValid;
-    // }
-
     render(){
+        if(this.state.redirect){
+            return <Redirect to={this.state.redirect} />
+        }
         return(
             <div className="Home" id="home">
                 <Row>

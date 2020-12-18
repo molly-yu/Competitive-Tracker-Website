@@ -5,17 +5,16 @@ from  werkzeug.security import generate_password_hash, check_password_hash
 from os.path import exists, join
 from datetime import datetime, timedelta 
 from functools import wraps 
+from flask_cors import CORS
 
 from constants import CONSTANTS
 from sample_data import sample_data
 
-
 app = Flask(__name__, static_folder='build')
+CORS(app)
 
 # Secret Token Key
 app.config['SECRET_KEY'] = 'secret_key_test'
-
-Access-Control-Allow-Origin: http://localhost:3000
 
 # MasterDetail Page Endpoint
 @app.route(CONSTANTS['ENDPOINT']['MASTER_DETAIL'])

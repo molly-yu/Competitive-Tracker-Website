@@ -1,20 +1,41 @@
 import React, { Component } from 'react';
 import { Form, FormControl,  Row, Col, Button, Table } from 'react-bootstrap';
+import { Redirect } from "react-router-dom";
 import '../css/login.css'
 import logo from '../assets/cibclogo.png';
 import penguin from '../assets/cibcpenguin.png';
 
 import axios from 'axios';
 
+var ls = require('local-storage');
+
 export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
         }
+
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+
+    }
+
+    componentDidMount(){
+        // check to see if token is valid
+        // let token = ls.get('token');
+        // if(token !== null && token.length !== 0){
+        //     axios.get('/test', { headers: { 'x-access-token': token} })
+        //     .then(response => {
+        //         // If request is good
+        //         console.log(response.data);
+        //         this.setState({ redirect: "/" }); // if logged in, redirect to home
+        //     })
+        //     .catch((error) => {
+        //         console.log('error ' + error);
+        //     });
+        // }
     }
 
     onChange(e) {
@@ -30,7 +51,7 @@ export default class Login extends Component {
         else {
             formData.append('username', this.state.username);
             formData.append('password', this.state.password);
-
+            var token = null;
             // post request to server
             axios({
                 method:'post',
@@ -40,17 +61,21 @@ export default class Login extends Component {
             .then(function(response){
                 console.log(response);
                 console.log(formData);
+                // set the jwt token, store in local storage
+                ls.set('token', formData);
+                
             })
             .catch(function(response){
                 console.log(response);
             })
-
-
+            if(token !== null && token.length > 0){
+                this.setState({redirect:"/"});
+            }
+            else{
+                alert('Wrong credentials');
+                this.setState({redirect:null});
+            }
         }
-
-        
-
-
     }
 
     handleValidation(){
@@ -58,13 +83,18 @@ export default class Login extends Component {
         let pass = this.state.password;
         let isValid = true;
 
-        if (user=='' || pass==''){
+        if (user==='' || pass===''){
             isValid = false;
         }
         return isValid;
     }
 
     render() {
+        if(this.state.redirect !== null){
+            console.log("hi");
+            return <Redirect to={this.state.redirect} />
+        }
+        else{
         return (
             <div className="Login" id="login">
                 <Row>
@@ -114,4 +144,5 @@ export default class Login extends Component {
             </div>
         )
     }
+}
 }

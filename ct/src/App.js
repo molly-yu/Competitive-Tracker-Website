@@ -10,7 +10,7 @@ import './App.css';
 
 // configure axios
 axios.defaults.baseURL = "http://localhost:3001";
-axios.defaults.withCredentials = true;
+//axios.defaults.withCredentials = true;
 axios.interceptors.response.use(
   (response) => {
       return response;
@@ -23,15 +23,16 @@ axios.interceptors.response.use(
   }
 );
 
-export default class App extends Component {
+export const UserContext = React.createContext();
+
+class App extends Component {
     render() {
         return (
-            <div className="App">
               <Router>
-                <Route path="/home" component={Home} exact/>
+                <Route path="/" component={Home} exact/>
                 <Route path="/login" component={Login} exact/>
               </Router>
-            </div>
         );
     }
 }
+export default App;
